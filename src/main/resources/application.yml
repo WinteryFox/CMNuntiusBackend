@@ -1,0 +1,8 @@
+spring:
+  r2dbc:
+    pool:
+      enabled: true
+    name: postgres
+    password: 12345
+    username: postgres
+    url: r2dbc:pool:postgres://localhost:5432

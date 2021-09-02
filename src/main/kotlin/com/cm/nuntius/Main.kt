@@ -1,4 +1,4 @@
-package cm.com.nuntius
+package com.cm.nuntius
 
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.runApplication
