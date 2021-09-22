@@ -7,7 +7,7 @@ plugins {
     kotlin("plugin.spring") version "1.5.21"
 }
 
-group = "com.cm.nuntius"
+group = "com.cm.nuntius.mo"
 version = "1.0-SNAPSHOT"
 
 repositories {
@@ -23,11 +23,16 @@ dependencies {
     implementation("org.jetbrains.kotlin:kotlin-reflect")
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-reactor")
+    
     runtimeOnly("io.r2dbc:r2dbc-postgresql")
     runtimeOnly("org.postgresql:postgresql")
+
     testImplementation("org.springframework.boot:spring-boot-starter-test")
     testImplementation("io.projectreactor:reactor-test")
     testImplementation("org.springframework.security:spring-security-test")
+
+    implementation(files("../cm-sdk.jar"))
+    implementation("com.google.code.gson:gson:2.8.5")
 }
 
 tasks.withType<KotlinCompile> {
