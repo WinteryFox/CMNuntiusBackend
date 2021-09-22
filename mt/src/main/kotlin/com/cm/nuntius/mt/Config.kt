@@ -1,4 +1,4 @@
-package com.cm.nuntius
+package com.cm.nuntius.mt
 
 import com.cmtelecom.text.sdk.MessagingClient
 import org.springframework.context.annotation.Bean
