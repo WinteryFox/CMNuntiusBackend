@@ -1,6 +1,6 @@
 CREATE TABLE messages
 (
     id TEXT PRIMARY KEY,
-    timestamp TIMESTAMP NOT NULL,
-    content TEXT NOT NULL
-)
+    timestamp TIMESTAMP WITHOUT TIME ZONE NOT NULL,
+    channel TEXT NOT NULL
+);

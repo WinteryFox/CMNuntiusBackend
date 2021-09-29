@@ -11,7 +11,7 @@ import org.springframework.security.web.server.SecurityWebFilterChain
 @EnableWebFluxSecurity
 class Config {
     @Bean
-    fun messagingClient() = MessagingClient(System.getenv("cm_token"))
+    fun messagingClient() = MessagingClient(System.getenv("CM_TOKEN"))
 
     @Bean
     fun configure(httpSecurity: ServerHttpSecurity): SecurityWebFilterChain =

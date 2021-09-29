@@ -1,10 +1,15 @@
-spring:
-  r2dbc:
-    pool:
-      enabled: true
-    name: postgres
-    password: 12345
-    username: postgres
-    url: r2dbc:pool:postgres://localhost:5432
 server:
-  port: 8181
+  port: 8282
+  forward-headers-strategy: native
+
+spring:
+  webflux:
+    base-path: "/api"
+
+  r2dbc:
+    username: ${POSTGRES_USERNAME}
+    name: ${POSTGRES_DATABASE}
+    password: ${POSTGRES_PASSWORD}
+    url: "r2dbc:postgres://${POSTGRES_HOST}"
+logging.level:
+  com.cm.nuntius: ${LOG_LEVEL}
