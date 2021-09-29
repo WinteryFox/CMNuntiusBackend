@@ -7,4 +7,4 @@ spring:
     username: postgres
     url: r2dbc:pool:postgres://localhost:5432
 server:
-  port: 8080
+  port: 8282
