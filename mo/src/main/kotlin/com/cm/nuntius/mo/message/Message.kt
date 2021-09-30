@@ -8,7 +8,8 @@ data class Message(
     val to: To,
     @JsonProperty("message")
     val content: Content,
-    val reference: String,
+    @JsonProperty("reference")
+    val id: String,
     val groupings: List<String>,
     @JsonProperty("timeUtc")
     val time: LocalDateTime,
