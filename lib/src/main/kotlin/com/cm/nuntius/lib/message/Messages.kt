@@ -12,6 +12,7 @@ class BodyBuilder {
 }
 
 class MessageBuilder {
+    lateinit var reference: String
     private lateinit var body: Body
     private val to = mutableListOf<To>()
     lateinit var from: String
@@ -28,17 +29,17 @@ class MessageBuilder {
         to.add(To(t.number))
     }
     fun allowedChannels(vararg channels: String) = allowedChannels.addAll(channels)
-    fun build() = Message(body, to, from, allowedChannels)
+    fun build() = MtMessage(reference, body, to, from, allowedChannels)
 }
 
 data class MessageCreateRequest(
     val authentication: Authentication,
     @JsonProperty("msg")
-    val messages: List<Message>
+    val messages: List<MtMessage>
 )
 
 class MessagesBuilder {
-    private val messages = mutableListOf<Message>()
+    private val messages = mutableListOf<MtMessage>()
 
     fun message(init: MessageBuilder.() -> Unit) = messages.add(MessageBuilder().apply(init).build())
     fun build(token: String) = MessageCreateRequest(Authentication(token), messages)
