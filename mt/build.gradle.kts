@@ -31,7 +31,6 @@ dependencies {
     testImplementation("io.projectreactor:reactor-test")
     testImplementation("org.springframework.security:spring-security-test")
 
-    implementation(files("../cm-sdk.jar"))
     implementation("com.google.code.gson:gson:2.8.5")
 }
 
