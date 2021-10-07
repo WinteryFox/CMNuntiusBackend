@@ -1,6 +1,5 @@
 package com.cm.nuntius.mo
 
-import com.cm.nuntius.lib.MessagingClient
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
 import org.springframework.security.config.annotation.web.reactive.EnableWebFluxSecurity
@@ -10,9 +9,6 @@ import org.springframework.security.web.server.SecurityWebFilterChain
 @Configuration
 @EnableWebFluxSecurity
 class Config {
-    @Bean
-    fun messagingClient() = MessagingClient(System.getenv("CM_TOKEN"))
-
     @Bean
     fun configure(httpSecurity: ServerHttpSecurity): SecurityWebFilterChain =
         httpSecurity
