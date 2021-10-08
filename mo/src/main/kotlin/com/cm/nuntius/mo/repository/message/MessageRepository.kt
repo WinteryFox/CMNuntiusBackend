@@ -1,6 +1,6 @@
 package com.cm.nuntius.mo.repository.message
 
-import com.cm.nuntius.lib.message.MoMessage
+import com.cm.nuntius.lib.json.message.MoMessage
 import reactor.core.publisher.Mono
 
 interface MessageRepository {

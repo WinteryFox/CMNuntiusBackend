@@ -1,4 +1,4 @@
-package com.cm.nuntius.lib.message
+package com.cm.nuntius.lib.json.message
 
 import java.time.LocalDateTime
 

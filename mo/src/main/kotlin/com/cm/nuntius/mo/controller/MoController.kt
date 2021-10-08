@@ -1,6 +1,6 @@
 package com.cm.nuntius.mo.controller
 
-import com.cm.nuntius.lib.message.MoMessage
+import com.cm.nuntius.lib.json.message.MoMessage
 import com.cm.nuntius.mo.repository.message.MessageRepository
 import kotlinx.coroutines.reactor.awaitSingleOrNull
 import kotlinx.coroutines.reactor.mono

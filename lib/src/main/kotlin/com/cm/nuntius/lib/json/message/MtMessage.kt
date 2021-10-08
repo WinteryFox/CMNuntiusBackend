@@ -1,5 +1,8 @@
-package com.cm.nuntius.lib.message
+package com.cm.nuntius.lib.json.message
 
+import kotlinx.serialization.Serializable
+
+@Serializable
 data class MtMessage(
     val reference: String,
     val body: Body,

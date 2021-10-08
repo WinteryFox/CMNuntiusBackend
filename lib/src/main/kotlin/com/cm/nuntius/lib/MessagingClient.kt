@@ -1,33 +1,33 @@
 package com.cm.nuntius.lib
 
-import com.cm.nuntius.lib.message.MessagesBuilder
+import com.cm.nuntius.lib.builder.message.MessagesBuilder
+import com.cm.nuntius.lib.json.message.Authentication
+import com.cm.nuntius.lib.json.message.Messages
+import com.cm.nuntius.lib.request.MessageCreateRequest
 import com.cm.nuntius.lib.response.MtCreateResponse
-import com.fasterxml.jackson.databind.ObjectMapper
-import com.fasterxml.jackson.module.kotlin.jacksonObjectMapper
-import com.fasterxml.jackson.module.kotlin.readValue
-import io.netty.buffer.Unpooled
-import kotlinx.coroutines.reactor.awaitSingle
-import reactor.core.publisher.Mono
-import reactor.netty.http.client.HttpClient
+import io.ktor.client.*
+import io.ktor.client.engine.cio.*
+import io.ktor.client.features.*
+import io.ktor.client.features.json.*
+import io.ktor.client.features.json.serializer.*
+import io.ktor.client.request.*
+import io.ktor.http.*
 
 class MessagingClient(
     private val token: String,
-    private val client: HttpClient = HttpClient.create()
-        .baseUrl("https://gw.cmtelecom.com/v1.0")
-        .headers { it.add("Content-Type", "application/json") },
-    private val mapper: ObjectMapper = jacksonObjectMapper()
-) {
-    private val writer = mapper.writer().withRootName("messages")
-
-    suspend fun sendMessage(init: MessagesBuilder.() -> Unit): MtCreateResponse {
-        val messages = MessagesBuilder().apply(init).build(token)
-        return mapper.readValue(
-            client.post()
-                .uri("/message")
-                // TODO: Not entirely sure if this is a safe call, needs some more research
-                .send(Mono.just(Unpooled.wrappedBuffer(writer.writeValueAsString(messages).toByteArray())))
-                .responseSingle { _, body -> body.asString() }
-                .awaitSingle()
-        )
+    private val client: HttpClient = HttpClient(CIO) {
+        defaultRequest {
+            header(HttpHeaders.ContentType, ContentType.Application.Json)
+        }
+        install(JsonFeature) {
+            serializer = KotlinxSerializer()
+        }
     }
+) {
+    private val base = "https://gw.cmtelecom.com/v1.0"
+
+    suspend fun sendMessage(init: MessagesBuilder.() -> Unit): MtCreateResponse =
+        client.post("$base/message") {
+            body = MessageCreateRequest(Messages(Authentication(token), MessagesBuilder().apply(init).build()))
+        }
 }

@@ -1,6 +1,6 @@
 package com.cm.nuntius.mo.repository.message
 
-import com.cm.nuntius.lib.message.MoMessage
+import com.cm.nuntius.lib.json.message.MoMessage
 import kotlinx.coroutines.reactor.awaitSingleOrNull
 import kotlinx.coroutines.reactor.mono
 import org.springframework.r2dbc.core.DatabaseClient

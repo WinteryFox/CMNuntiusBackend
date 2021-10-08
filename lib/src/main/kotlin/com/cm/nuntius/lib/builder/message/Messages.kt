@@ -1,6 +1,8 @@
-package com.cm.nuntius.lib.message
+package com.cm.nuntius.lib.builder.message
 
-import com.fasterxml.jackson.annotation.JsonProperty
+import com.cm.nuntius.lib.json.message.Body
+import com.cm.nuntius.lib.json.message.MtMessage
+import com.cm.nuntius.lib.json.message.To
 
 class ToBuilder {
     lateinit var number: String
@@ -20,9 +22,7 @@ class MessageBuilder {
 
     fun body(init: BodyBuilder.() -> Unit) {
         val b = BodyBuilder().apply(init)
-        body = Body()
-        body.content = b.content
-        body.type = b.type
+        body = Body(b.type, b.content)
     }
     fun to(init: ToBuilder.() -> Unit) {
         val t = ToBuilder().apply(init)
@@ -32,15 +32,9 @@ class MessageBuilder {
     fun build() = MtMessage(reference, body, to, from, allowedChannels)
 }
 
-data class MessageCreateRequest(
-    val authentication: Authentication,
-    @JsonProperty("msg")
-    val messages: List<MtMessage>
-)
-
 class MessagesBuilder {
     private val messages = mutableListOf<MtMessage>()
 
     fun message(init: MessageBuilder.() -> Unit) = messages.add(MessageBuilder().apply(init).build())
-    fun build(token: String) = MessageCreateRequest(Authentication(token), messages)
+    fun build() = messages
 }

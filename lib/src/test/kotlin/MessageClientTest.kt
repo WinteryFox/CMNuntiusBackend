@@ -9,13 +9,13 @@ internal class MessageClientTest {
     // TODO: Not sure how we're going to test this for production, this should not be left in this state...
     @Test
     fun testSendMessage() = runBlocking {
-        val r = "0006"
+        val r = "0009"
         val response = client.sendMessage {
             message {
                 reference = r
                 body {
                     type = "auto"
-                    content = "Heyy"
+                    content = r
                 }
                 to {
                     number = "851427679786192896"

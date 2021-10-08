@@ -1,4 +1,4 @@
-package com.cm.nuntius.lib.message
+package com.cm.nuntius.lib.json.message
 
 data class Content(
     val text: String,
