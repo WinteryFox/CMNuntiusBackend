@@ -12,15 +12,21 @@ import io.ktor.client.features.json.*
 import io.ktor.client.features.json.serializer.*
 import io.ktor.client.request.*
 import io.ktor.http.*
+import kotlinx.serialization.json.Json
 
 class MessagingClient(
     private val token: String,
+    private val json: Json = Json {
+        ignoreUnknownKeys = true
+        isLenient = true
+    },
     private val client: HttpClient = HttpClient(CIO) {
+        expectSuccess = false
         defaultRequest {
             header(HttpHeaders.ContentType, ContentType.Application.Json)
         }
         install(JsonFeature) {
-            serializer = KotlinxSerializer()
+            serializer = KotlinxSerializer(json)
         }
     }
 ) {
