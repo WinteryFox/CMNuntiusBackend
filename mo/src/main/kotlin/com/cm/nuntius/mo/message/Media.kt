@@ -1,8 +1,5 @@
-package com.cm.nuntius.lib.json.message
+package com.cm.nuntius.mo.message
 
-import kotlinx.serialization.Serializable
-
-@Serializable
 data class Media(
     val mediaUri: String,
     val contentType: String,

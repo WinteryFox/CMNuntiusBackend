@@ -1,6 +1,6 @@
 package com.cm.nuntius.mt
 
-import com.cm.nuntius.lib.MessagingClient
+import com.cmtelecom.text.sdk.MessagingClient
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
 import org.springframework.security.config.annotation.web.reactive.EnableWebFluxSecurity
