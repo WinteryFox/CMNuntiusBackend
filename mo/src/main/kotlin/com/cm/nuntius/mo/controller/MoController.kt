@@ -1,6 +1,6 @@
 package com.cm.nuntius.mo.controller
 
-import com.cm.nuntius.mo.message.Message
+import com.cm.nuntius.lib.json.message.MoMessage
 import com.cm.nuntius.mo.repository.message.MessageRepository
 import kotlinx.coroutines.reactor.awaitSingleOrNull
 import kotlinx.coroutines.reactor.mono
@@ -20,8 +20,8 @@ class MoController(
 
     @PostMapping("/mo")
     @ResponseStatus(HttpStatus.OK)
-    fun receive(@RequestBody message: Message) = mono {
-        logger.trace("Received MO message with reference ${message.id}")
+    fun receive(@RequestBody message: MoMessage) = mono {
+        logger.trace("Received MO message with reference ${message.reference}")
         repository.save(message).awaitSingleOrNull()
     }
 }

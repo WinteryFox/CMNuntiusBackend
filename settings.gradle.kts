@@ -1,3 +1,2 @@
 rootProject.name = "CMNuntiusBackend"
-include("mo")
-include("mt")
+include("mo", "mt", "lib")
