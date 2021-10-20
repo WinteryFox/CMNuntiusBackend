@@ -1,5 +1,6 @@
 package com.cm.nuntius.lib.builder.message
 
+import com.cm.nuntius.lib.Channel
 import com.cm.nuntius.lib.json.message.Body
 import com.cm.nuntius.lib.json.message.MtMessage
 import com.cm.nuntius.lib.json.message.To
@@ -18,7 +19,7 @@ class MessageBuilder {
     private lateinit var body: Body
     private val to = mutableListOf<To>()
     lateinit var from: String
-    private val allowedChannels = mutableListOf<String>()
+    private val allowedChannels = mutableListOf<Channel>()
 
     fun body(init: BodyBuilder.() -> Unit) {
         val b = BodyBuilder().apply(init)
@@ -28,7 +29,7 @@ class MessageBuilder {
         val t = ToBuilder().apply(init)
         to.add(To(t.number))
     }
-    fun allowedChannels(vararg channels: String) = allowedChannels.addAll(channels)
+    fun allowedChannels(vararg channels: Channel) = allowedChannels.addAll(channels)
     fun build() = MtMessage(reference, body, to, from, allowedChannels)
 }
 

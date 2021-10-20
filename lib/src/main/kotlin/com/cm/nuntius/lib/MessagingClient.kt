@@ -14,6 +14,27 @@ import io.ktor.client.request.*
 import io.ktor.http.*
 import kotlinx.serialization.json.Json
 
+/**
+ * The MessagingClient handles making requests to the CM.com API to create messages.
+ *
+ * Example of usage;
+ * ```
+ * MessagingClient("token").sendMessage {
+ *      message {
+ *          from = "ID"
+ *          to {
+ *              number = "0612345678"
+ *          }
+ *          body {
+ *              content = "Hello, World!"
+ *              type = "auto"
+ *              reference = "1"
+ *          }
+ *          allowedChannels(TWITTER)
+ *      }
+ * }
+ * ```
+ */
 class MessagingClient(
     private val token: String,
     private val json: Json = Json {
@@ -32,8 +53,13 @@ class MessagingClient(
 ) {
     private val base = "https://gw.cmtelecom.com/v1.0"
 
-    suspend fun sendMessage(init: MessagesBuilder.() -> Unit): MtCreateResponse =
+    /**
+     * Creates the specified messages in the specified channels.
+     * @param messages The messages to be created.
+     * @return Returns [MtCreateResponse] on success.
+     */
+    suspend fun sendMessage(messages: MessagesBuilder.() -> Unit): MtCreateResponse =
         client.post("$base/message") {
-            body = MessageCreateRequest(Messages(Authentication(token), MessagesBuilder().apply(init).build()))
+            body = MessageCreateRequest(Messages(Authentication(token), MessagesBuilder().apply(messages).build()))
         }
 }
