@@ -36,13 +36,13 @@ class MessagingClient(
     /**
      * Creates the specified messages in the specified channels.
      * @param messages The messages to be created.
-     * @return Returns [MtCreateResponse] on success.
+     * @return Returns [MtCreateResponse] on failure and success.
      */
-    suspend fun sendMessage(init: MessagesBuilder.() -> Unit): MtCreateResponse =
+    suspend fun sendMessage(messages: MessagesBuilder.() -> Unit): MtCreateResponse =
         rest.call(Route.MessagePost) {
             body(
                 MessageCreateRequest.serializer(),
-                MessageCreateRequest(Messages(Authentication(token), MessagesBuilder().apply(init).build()))
+                MessageCreateRequest(Messages(Authentication(token), MessagesBuilder().apply(messages).build()))
             )
         }
 }

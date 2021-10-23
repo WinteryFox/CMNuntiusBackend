@@ -10,14 +10,14 @@ sealed interface ResponseMapper<T> {
 }
 
 internal class ValueJsonMapper<T>(
-    val strategy: DeserializationStrategy<T>
+    private val strategy: DeserializationStrategy<T>
 ) : ResponseMapper<T> {
     override fun deserialize(json: Json, body: String): T = json.decodeFromString(strategy, body)
     override fun toString(): String = "ValueJsonMapper(strategy=$strategy)"
 }
 
 internal class NullAwareMapper<T>(
-    val strategy: DeserializationStrategy<T>
+    private val strategy: DeserializationStrategy<T>
 ) : ResponseMapper<T?> {
     override fun deserialize(json: Json, body: String): T? {
         if (body.isBlank()) return null
@@ -44,6 +44,6 @@ sealed class Route<T>(
     object MessagePost : Route<MtCreateResponse>(HttpMethod.Post, "/message", MtCreateResponse.serializer())
 
     companion object {
-        val baseUrl = "https://gw.cmtelecom.com/v1.0"
+        const val baseUrl = "https://gw.cmtelecom.com/v1.0"
     }
 }

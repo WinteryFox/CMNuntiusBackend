@@ -23,9 +23,6 @@ class RequestHandler {
         defaultRequest {
             header(HttpHeaders.ContentType, ContentType.Application.Json)
         }
-        install(JsonFeature) {
-            serializer = KotlinxSerializer(json)
-        }
     }
 
     suspend fun <B : Any, R> handle(request: Request<B, R>): R {
