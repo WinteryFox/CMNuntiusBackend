@@ -7,8 +7,10 @@ import io.ktor.client.request.*
 import io.ktor.client.statement.*
 import io.ktor.http.*
 import kotlinx.serialization.json.Json
+import mu.KotlinLogging
 
 class RequestHandler {
+    private val logger = KotlinLogging.logger { }
     private val json: Json = Json {
         encodeDefaults = false
         allowStructuredMapKeys = true
@@ -40,7 +42,7 @@ class RequestHandler {
         run {
             val requestBody = request.body ?: return@run
             body = json.encodeToString(requestBody.strategy, requestBody.body)
-            println(body) // TODO: Remove temporary, should use logging framework anyway
+            logger.debug { body }
         }
     }
 }
