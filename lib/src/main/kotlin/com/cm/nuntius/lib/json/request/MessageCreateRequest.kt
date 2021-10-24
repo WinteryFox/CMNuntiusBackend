@@ -1,4 +1,4 @@
-package com.cm.nuntius.lib.request
+package com.cm.nuntius.lib.json.request
 
 import com.cm.nuntius.lib.json.message.Messages
 import kotlinx.serialization.Serializable

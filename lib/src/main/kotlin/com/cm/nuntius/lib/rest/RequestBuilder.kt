@@ -1,8 +1,5 @@
-package com.cm.nuntius.lib.request
+package com.cm.nuntius.lib.rest
 
-import com.cm.nuntius.lib.request.Request
-import com.cm.nuntius.lib.request.RequestBody
-import com.cm.nuntius.lib.Route
 import kotlinx.serialization.SerializationStrategy
 
 class RequestBuilder<T>(

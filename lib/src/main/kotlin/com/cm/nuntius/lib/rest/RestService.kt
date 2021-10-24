@@ -1,7 +1,5 @@
-package com.cm.nuntius.lib
+package com.cm.nuntius.lib.rest
 
-import com.cm.nuntius.lib.request.RequestBuilder
-import com.cm.nuntius.lib.request.RequestHandler
 import kotlin.contracts.ExperimentalContracts
 import kotlin.contracts.InvocationKind
 import kotlin.contracts.contract

@@ -1,6 +1,6 @@
-package com.cm.nuntius.lib
+package com.cm.nuntius.lib.rest
 
-import com.cm.nuntius.lib.response.MtCreateResponse
+import com.cm.nuntius.lib.json.response.MtCreateResponse
 import io.ktor.http.*
 import kotlinx.serialization.DeserializationStrategy
 import kotlinx.serialization.json.Json

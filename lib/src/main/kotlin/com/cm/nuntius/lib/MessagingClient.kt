@@ -3,9 +3,11 @@ package com.cm.nuntius.lib
 import com.cm.nuntius.lib.builder.message.MessagesBuilder
 import com.cm.nuntius.lib.json.message.Authentication
 import com.cm.nuntius.lib.json.message.Messages
-import com.cm.nuntius.lib.request.MessageCreateRequest
-import com.cm.nuntius.lib.request.RequestHandler
-import com.cm.nuntius.lib.response.MtCreateResponse
+import com.cm.nuntius.lib.json.request.MessageCreateRequest
+import com.cm.nuntius.lib.rest.RequestHandler
+import com.cm.nuntius.lib.json.response.MtCreateResponse
+import com.cm.nuntius.lib.rest.RestClient
+import com.cm.nuntius.lib.rest.Route
 
 /**
  * The MessagingClient handles making requests to the CM.com API to create messages.

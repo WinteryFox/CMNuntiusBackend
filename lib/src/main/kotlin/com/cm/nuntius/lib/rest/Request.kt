@@ -1,6 +1,5 @@
-package com.cm.nuntius.lib.request
+package com.cm.nuntius.lib.rest
 
-import com.cm.nuntius.lib.Route
 import kotlinx.serialization.SerializationStrategy
 
 data class RequestBody<T>(
