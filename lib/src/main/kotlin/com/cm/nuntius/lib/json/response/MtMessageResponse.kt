@@ -1,4 +1,4 @@
-package com.cm.nuntius.lib.response
+package com.cm.nuntius.lib.json.response
 
 import kotlinx.serialization.Serializable
 
