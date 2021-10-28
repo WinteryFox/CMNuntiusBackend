@@ -16,7 +16,7 @@ class MoController(
     private val repository: MessageRepository,
     private val event: EventService
 ) {
-    val logger: Logger = LoggerFactory.getLogger(MoController::class.java)
+    private val logger: Logger = LoggerFactory.getLogger(MoController::class.java)
 
     @GetMapping("/events")
     fun events() = event.publisher
