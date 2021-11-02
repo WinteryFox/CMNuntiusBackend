@@ -5,7 +5,7 @@ import kotlinx.serialization.Serializable
 
 @Serializable
 data class MtMessage(
-    val reference: String?,
+    val reference: String? = null,
     val body: Body,
     val to: List<To>,
     val from: String,
