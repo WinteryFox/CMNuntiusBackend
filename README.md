@@ -47,4 +47,4 @@ The mo service exposes a couple of endpoints which are as follows:
 ###MT
 The mt service exposes some endpoints as well these are:
 * POST /messages
-  * Sends the attached message
+  * Sends the attached message`.
