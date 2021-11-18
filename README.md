@@ -3,7 +3,7 @@
 <a href="https://cm.com"><img align="right" src="https://www.cm.com/cdn/cm/cm.svg" width=27%></a>
 
 Nuntius is a test platform for the messaging API provided by [CM.com](https://cm.com),
-being developed by students at [Fontys College of Informatics](https://fontys.nl).
+being developed by students at [Fontys University of Applied Sciences - Information & Communication Technology](https://fontys.nl).
 
 
 
@@ -19,7 +19,7 @@ The project is split in 3 packages
 ### Prerequisites
 * Preferred IDE
 * Docker
-* Postgresql
+* PostgreSQL
 
 
 ### Installation
@@ -31,7 +31,11 @@ The project is split in 3 packages
    ```sh
    npm install
    ```
-3. Start the project
+3. Add PostgreSQL with Docker container
+   ```sh
+   npm docker build -t cmnuntiusbackend . && docker run -p 5432:5432 --name CMNuntiusBackend cmnuntiusbackend
+   ```
+4. Start the project by Spring Boot running both MO and MT
 
 
 ## Usage
@@ -47,4 +51,4 @@ The mo service exposes a couple of endpoints which are as follows:
 ###MT
 The mt service exposes some endpoints as well these are:
 * POST /messages
-  * Sends the attached message`.
+  * Sends the attached message.
