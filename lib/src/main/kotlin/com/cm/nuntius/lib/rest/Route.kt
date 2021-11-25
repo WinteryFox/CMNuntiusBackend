@@ -19,10 +19,8 @@ internal class ValueJsonMapper<T>(
 internal class NullAwareMapper<T>(
     private val strategy: DeserializationStrategy<T>
 ) : ResponseMapper<T?> {
-    override fun deserialize(json: Json, body: String): T? {
-        if (body.isBlank()) return null
-        return json.decodeFromString(strategy, body)
-    }
+    override fun deserialize(json: Json, body: String): T? =
+        if (body.isBlank()) null else json.decodeFromString(strategy, body)
 
     override fun toString(): String = "NullAwareMapper(strategy=$strategy)"
 }
