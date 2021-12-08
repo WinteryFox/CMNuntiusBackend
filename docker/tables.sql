@@ -18,7 +18,7 @@ CREATE TABLE predefined_answer_category
 );
 CREATE TABLE answer_category
 (
-    answerId TEXT NOT NULL,
-    categoryId TEXT NOT NULL,
-    CONSTRAINT FK_AnswerCategory_Answer FOREIGN KEY (answerId) REFERENCES predefined_answer(id)
+    answer_id TEXT NOT NULL REFERENCES predefined_answer (id),
+    category_id TEXT NOT NULL REFERENCES predefined_answer_category (id)
+    --CONSTRAINT FK_AnswerCategory_Answer FOREIGN KEY (answerId) REFERENCES predefined_answer(id)
 );
