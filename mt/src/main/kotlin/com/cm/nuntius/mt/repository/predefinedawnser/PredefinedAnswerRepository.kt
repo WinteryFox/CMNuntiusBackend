@@ -5,4 +5,4 @@ import org.springframework.data.repository.kotlin.CoroutineCrudRepository
 import org.springframework.stereotype.Repository
 
 @Repository
-interface PostgressPredefinedAwnserCategoryRepository : CoroutineCrudRepository<PredefinedAnswer, String>
+interface PredefinedAnswerRepository : CoroutineCrudRepository<PredefinedAnswer, String>
