@@ -1,4 +1,4 @@
-package com.cm.nuntius.mt.json.predefinedanswer
+package com.cm.nuntius.mo.json.predefinedanswer
 
 data class PredefinedAnswerCategory (
     val id: Long,

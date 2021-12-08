@@ -1,6 +1,6 @@
-package com.cm.nuntius.mt.repository.predefinedawnser
+package com.cm.nuntius.mo.repository.predefinedanswer
 
-import com.cm.nuntius.mt.json.predefinedanswer.PredefinedAnswer
+import com.cm.nuntius.mo.json.predefinedanswer.PredefinedAnswer
 import org.springframework.data.repository.kotlin.CoroutineCrudRepository
 import org.springframework.stereotype.Repository
 
