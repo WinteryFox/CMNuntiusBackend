@@ -4,20 +4,15 @@ CREATE TABLE messages
     timestamp TIMESTAMP WITHOUT TIME ZONE NOT NULL,
     channel TEXT NOT NULL
 );
-
-CREATE TABLE predefined_answer
-(
-    id TEXT PRIMARY KEY,
-    name TEXT NOT NULL,
-    text TEXT NOT NULL
-);
 CREATE TABLE predefined_answer_category
 (
     id TEXT PRIMARY KEY,
-    name TEXT NOT NULL
+    version smallint not null default 1
 );
-CREATE TABLE answer_category
+CREATE TABLE predefined_answer
 (
-    answer_id TEXT NOT NULL REFERENCES predefined_answer (id),
-    category_id TEXT NOT NULL REFERENCES predefined_answer_category (id)
+    id TEXT primary key,
+    text TEXT NOT NULL,
+    category TEXT NOT NULL REFERENCES predefined_answer_category (id),
+    version smallint not null default 1
 );
