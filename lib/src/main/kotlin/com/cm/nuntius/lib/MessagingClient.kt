@@ -6,23 +6,15 @@ import com.cm.nuntius.lib.json.message.Messages
 import com.cm.nuntius.lib.json.request.MessageCreateRequest
 import com.cm.nuntius.lib.rest.RequestHandler
 import com.cm.nuntius.lib.json.response.MtCreateResponse
-import com.cm.nuntius.lib.rest.Request
 import com.cm.nuntius.lib.rest.RestClient
 import com.cm.nuntius.lib.rest.Route
 import io.ktor.client.*
 import io.ktor.client.engine.cio.*
-import io.ktor.client.features.*
 import io.ktor.client.request.*
 import io.ktor.client.request.request
 import io.ktor.client.statement.*
 import io.ktor.http.*
 import io.ktor.util.*
-import io.ktor.utils.io.*
-import io.ktor.utils.io.jvm.javaio.*
-import java.io.ByteArrayInputStream
-import java.io.ByteArrayOutputStream
-import java.io.InputStream
-import java.io.OutputStream
 
 /**
  * The MessagingClient handles making requests to the CM.com API to create messages.
